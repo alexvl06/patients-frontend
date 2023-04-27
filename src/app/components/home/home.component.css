@@ -1,0 +1,14 @@
+section{
+  display: flex;
+  flex-direction: column;
+  place-self: center;
+  height:500px;
+}
+
+h1{
+  text-align: center;
+}
+
+p{
+  margin: 0 50px;
+}

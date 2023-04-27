@@ -1,0 +1,179 @@
+
+    <h2>REGISTRATE O ACTUALIZA TUS DATOS</h2>
+  <form [formGroup]="form" (ngSubmit)="createUser()" (change)="onFormChanges()">
+    <div class="entries_img">
+      <div class="total-entries">
+        <div class="entries">
+          <label for="id">
+            Número de documento
+            <input formControlName="id" type="text" id="id" name="id">
+            <div class="error-div" *ngIf="idField?.errors && idField?.dirty" >
+              <p class="error-message" *ngIf="idField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="id_type">Tipo de documento
+            <select formControlName="type_id" id="documents">
+              <option value="CC">Cédula de ciudadanía</option>
+              <option value="TI">Tarjeta de identidad</option>
+              <option value="CE">Cédula de extranjería</option>
+              <option value="RC">Registro civil</option>
+              </select>
+              <div class="error-div" *ngIf="type_idField?.errors && type_idField?.dirty" >
+                <p class="error-message" *ngIf="type_idField?.hasError('required')">*campo requerido</p>
+              </div>
+          </label>
+
+          <label for="firstnames">
+            Nombres
+            <input formControlName="firstnames" type="text" id="firstnames" name="firstnames">
+            <div class="error-div" *ngIf="firstnamesField?.errors && firstnamesField?.dirty" >
+              <p class="error-message" *ngIf="firstnamesField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="lastnames">
+            Apellidos
+            <input formControlName="lastnames" type="text" id="lastnames" name="lastnames">
+            <div class="error-div" *ngIf="lastnamesField?.errors && lastnamesField?.dirty" >
+              <p class="error-message" *ngIf="lastnamesField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="birthdate">
+            Fecha de nacimiento
+            <input formControlName="birthdate" type="date" id="birthdate" name="birthdate">
+            <div class="error-div" *ngIf="birthdateField?.errors && birthdateField?.dirty" >
+              <p class="error-message" *ngIf="birthdateField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="genre">
+            Género
+            <div class="radio-options">
+              <label>
+                <input formControlName="genre" type="radio" name="genre" value="male">
+                Hombre
+              </label>
+              <label>
+                <input formControlName="genre" type="radio" name="genre" value="female">
+                Mujer
+              </label>
+              <label>
+                <input formControlName="genre" type="radio" name="genre" value="other">
+                Otro
+              </label>
+            </div>
+            <div class="error-div" *ngIf="genreField?.errors && genreField?.dirty" >
+              <p class="error-message" *ngIf="genreField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="address">
+            Dirección
+            <input formControlName="address" type="text" id="address" name="address">
+            <div class="error-div" *ngIf="addressField?.errors && addressField?.dirty" >
+              <p class="error-message" *ngIf="addressField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="photo">
+            {{fileButtonTitle}}
+            <input (change)="uploadImage($event)" formControlName="photo" type="file" id="photo" name="photo" accept="image/*">
+            <p *ngIf="isImageSelected" class="image-title">{{imageTitle}}</p>
+            <div class="error-div" *ngIf="photoField?.errors && photoField?.dirty" >
+              <p class="error-message" *ngIf="photoField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="landline">
+            Teléfono fijo
+            <input formControlName="landline" type="text" id="landline" name="landline">
+            <div class="error-div" *ngIf="landlineField?.errors && landlineField?.dirty" >
+              <p class="error-message" *ngIf="landlineField?.hasError('minlength') &&!landlineField?.hasError('pattern')">*debe tener más de 6 dígitos</p>
+              <p class="error-message" *ngIf="landlineField?.hasError('maxlength') &&!landlineField?.hasError('pattern')">*debe tener menos de 14 dígitos</p>
+              <p class="error-message" *ngIf="landlineField?.hasError('pattern')">*no se admiten letras</p>
+            </div>
+          </label>
+
+          <label for="cellphone">
+            Teléfono celular
+            <input formControlName="cellphone" type="text" id="cellphone" name="cellphone">
+            <div class="error-div" *ngIf="cellphoneField?.errors && cellphoneField?.dirty" >
+              <p class="error-message" *ngIf="cellphoneField?.hasError('minlength') &&!cellphoneField?.hasError('pattern')">*debe tener más de 6 dígitos</p>
+              <p class="error-message" *ngIf="cellphoneField?.hasError('maxlength')&&!cellphoneField?.hasError('pattern')">*debe tener menos de 11 dígitos</p>
+              <p class="error-message" *ngIf="cellphoneField?.hasError('required')">*campo requerido</p>
+              <p class="error-message" *ngIf="cellphoneField?.hasError('pattern')">*no se admiten letras</p>
+            </div>
+          </label>
+
+          <label for="email">
+            Correo electrónico
+            <input formControlName="email" type="email" id="email" name="email">
+            <div class="error-div" *ngIf="emailField?.errors && emailField?.dirty" >
+              <p class="error-message" *ngIf="emailField?.hasError('required')">*campo requerido</p>
+              <p class="error-message" *ngIf="emailField?.hasError('pattern')">*no es un correo valido</p>
+            </div>
+          </label>
+
+          <label for="person_type">
+            Rol
+            <select (change)="onRoleChanges()" formControlName="person_type" id="person_type" name="person_type" >
+              <option value="" disabled></option>
+              <option value="patient">Paciente</option>
+              <option value="doctor">Médico</option>
+            </select>
+            <div class="error-div" *ngIf="person_typeField?.errors && person_typeField?.dirty" >
+              <p class="error-message" *ngIf="person_typeField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+        </div>
+
+        <div class="entries" *ngIf="isPatient">
+          <label for="doctor">
+            Médico
+            <select formControlName="doctor_id" id="doctor" name="doctor">
+              <option value=""></option>
+              <option *ngFor="let doctor of doctors" [value]="doctor.id">{{"Dr."+" "+doctor.firstnames+" "+doctor.lastnames}}</option>
+            </select>
+            <div class="error-div" *ngIf="doctor_idField?.errors && doctor_idField?.dirty" >
+              <p class="error-message" *ngIf="doctor_idField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="eps">
+            EPS
+            <input formControlName="eps" type="text" id="eps" name="eps">
+            <div class="error-div" *ngIf="epsField?.errors && epsField?.dirty" >
+              <p class="error-message" *ngIf="epsField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+
+          <label for="arl">
+            ARL
+            <input formControlName="arl" type="text" id="arl" name="arl">
+            <div class="error-div" *ngIf="arlField?.errors && arlField?.dirty" >
+              <p class="error-message" *ngIf="arlField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+          <label for="condition">
+            Estado
+            <input formControlName="condition" type="text" id="condition" name="condition">
+            <div class="error-div" *ngIf="conditionField?.errors && conditionField?.dirty" >
+              <p class="error-message" *ngIf="conditionField?.hasError('required')">*campo requerido</p>
+            </div>
+          </label>
+        </div>
+      </div>
+      <img [src]="imgSrc" *ngIf="imgSrc" alt = 'Imagen seleccionada'>
+    </div>
+
+
+
+    <div class="buttons">
+      <button (click)="clearForm()" [disabled]="!isClearButtonAvailable" type="button">Limpiar datos</button>
+      <button [disabled]="form.invalid" type="submit">Guardar</button>
+    </div>
+  </form>
+
+

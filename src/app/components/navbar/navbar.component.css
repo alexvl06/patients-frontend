@@ -1,0 +1,53 @@
+.end-nav {
+  display: flex;
+}
+.start-nav{
+  display: flex;
+  width:50%;
+  margin:0
+}
+
+nav >ul{
+  display: flex;
+}
+.start-nav li{
+  list-style: none;
+}
+
+.end-nav ul{
+ display: flex;
+ justify-content: space-around;
+ width: 500px;
+ list-style: none;
+ align-items:center;
+}
+
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  color: brown;
+
+}
+
+img{
+  width:  45px;
+  margin: 2px;
+
+}
+
+img:hover{
+  width: 50px;
+  margin: 0px;
+  padding: 0;
+  opacity: 0.6;
+}
+
+
+nav{
+  padding-bottom: 10px;
+}
+

@@ -1,0 +1,32 @@
+<section *ngIf="doctors.length !=0; else LoadMessage">
+  <table>
+    <thead>
+      <th>Nombre</th>
+      <th>ID</th>
+      <th>Teléfono</th>
+      <th>Correo eletrónico</th>
+      <th>Dirección IPS</th>
+      <th>Detalles</th>
+      <th>Eliminar </th>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let doctor of doctors" >
+        <td>{{doctor.firstnames+" "+doctor.lastnames}}</td>
+        <td>{{doctor.id_type+" "+doctor.id}}</td>
+        <td>{{doctor.cellphone}}</td>
+        <td>{{doctor.email}}</td>
+        <td>{{doctor.address}}</td>
+        <td><button (click)="details(doctor.id)" class="detailButton">+</button></td>
+        <td><button (click)="delete(doctor.id)" class="deleteButton">Eliminar</button> </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</section>
+
+<ng-template #LoadMessage>
+  <h1>¿Nada que mostrar?</h1>
+  <p>Puede que el reporte aún este cargando o no haya médicos  contratados</p>
+</ng-template>

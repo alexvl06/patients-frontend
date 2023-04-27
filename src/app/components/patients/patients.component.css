@@ -1,0 +1,55 @@
+section{
+  display:flex;
+  justify-content: center;
+}
+
+
+
+td{
+  padding:20px;
+  width:100px;text-align: center;
+}
+
+button{
+  border-radius: 20px;
+  border: hidden;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5) ;
+  padding: 10px;
+}
+
+.detailButton{
+
+  font-size: large;
+  height: 35px;
+
+}
+
+.detailButton:hover{
+
+  font-size: larger;
+  font-weight: bolder;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.5) ;
+
+}
+
+.deleteButton{
+  background-image: url('../../../assets/bin.jpg');
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size:medium;
+  font-weight: bolder;
+  color: rgba(0, 0, 0, 0.086);
+}
+
+.deleteButton:hover{
+  color: #871323;
+  background-color:whitesmoke;
+  background-image: none;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.5) ;
+}
+
+h1, p{
+  text-align: center;
+}
+
